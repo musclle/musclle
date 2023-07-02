@@ -1,1053 +1,672 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        #main {
-            height: 500px;
-            width: 1000px;
-            background-color: url(/2021-11-23.jpeg);
-            background-image: url(/2021-11-23.jpeg);
-        }
-
-        .gfg {
-            text-align: center;
-            font-size: 40px;
-            font-weight: bold;
-            padding-top: 80px;
-        }
-
-        .geeks {
-            font-size: 17px;
-            text-align: center;
-        }
-
-        @charset "utf-8";
-
-        /* CSS Document */
-        body,
-        html {
-            height: 100%;
-        }
-
-        body {
-            background: rgb(209, 228, 234);
-            background: -moz-radial-gradient(center, ellipse cover, rgba(209, 228, 234, 1) 0%, rgba(186, 228, 244, 1) 100%);
-            background: -webkit-gradient(radial, center center, 0px, center center, 100%,
-                    color-stop(0%, rgba(209, 228, 234, 1)), color-stop(100%, rgba(186, 228, 244, 1)));
-            background: -webkit-radial-gradient(center, ellipse cover, rgba(209, 228, 234, 1) 0%, rgba(186, 228, 244, 1) 100%);
-            background: -o-radial-gradient(center, ellipse cover, rgba(209, 228, 234, 1) 0%, rgba(186, 228, 244, 1) 100%);
-            background: -ms-radial-gradient(center, ellipse cover, rgba(209, 228, 234, 1) 0%, rgba(186, 228, 244, 1) 100%);
-            background: radial-gradient(ellipse at center, rgba(209, 228, 234, 1) 0%, rgba(186, 228, 244, 1) 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1e4ea',
-                    endColorstr='#bae4f4', GradientType=1);
-
-
-            padding: 0;
-            margin: 0;
-        }
-
-        .country-wrap {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .push-bottom {
-            position: absolute;
-            bottom: 0;
-            height: 100%;
-        }
-
-        .bottom-ground {
-            background: #8d773e;
-            width: 102%;
-            left: -1%;
-            height: 60px;
-            bottom: 0;
-            position: absolute;
-            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2) inset;
-        }
-
-        .street {
-            background: #7a7a7a url(data:image/png;base64,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);
-            height: 80px;
-            width: 102%;
-            position: absolute;
-            bottom: 0;
-            box-shadow: 0 1px 16px rgba(111, 35, 51, 0.4) inset;
-        }
-
-        .street:after {
-            content: '';
-            display: block;
-            position: absolute;
-            width: 100%;
-            height: 10px;
-            background: #cdbcb4;
-            bottom: 0;
-            border-bottom: 3px solid #72625a;
-            z-index: 1;
-        }
-
-        .street:before {
-            content: '';
-            display: block;
-            position: absolute;
-            width: 100%;
-            height: 7px;
-            background: #c2a99d;
-            bottom: -7px;
-            z-index: 1;
-        }
-
-        .street-stripe {
-            background: #d4d4d4;
-            height: 8px;
-            width: 100px;
-            position: absolute;
-            bottom: 44px;
-            border-radius: 2px;
-            box-shadow: 200px 0 0 #d4d4d4, 400px 0 0 #d4d4d4, 600px 0 0 #d4d4d4, 800px 0 0 #d4d4d4, 1000px 0 0 #d4d4d4,
-                1200px 0 0 #d4d4d4, 1400px 0 0 #d4d4d4, 1600px 0 0 #d4d4d4, 1800px 0 0 #d4d4d4, 2000px 0 0 #d4d4d4;
-        }
-
-        .grass {
-            height: 40px;
-            width: 100%;
-            background-color: #dbcac2;
-            position: absolute;
-            bottom: 60px;
-        }
-
-        .grass:before {
-            position: absolute;
-            content: '';
-            top: 14px;
-            left: 0;
-            height: 8px;
-            width: 100%;
-            background-color: #b99f93;
-        }
-
-        .grass:after {
-            position: absolute;
-            content: '';
-            top: -4px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background-color: #0aa;
-            background: linear-gradient(135deg, transparent 25%, #0aa 25%);
-            background-size: 10px 10px;
-        }
-
-        .sun {
-            background: #ff9944;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            box-shadow: 0 0 50px rgba(255, 153, 68, 0.7);
-            position: absolute;
-            left: 49%;
-            bottom: 350px;
-        }
-
-        .tree-1 {
-            position: absolute;
-            z-index: 2;
-            bottom: 210px;
-            right: 10px;
-            width: 50px;
-            height: 100px;
-
-        }
-
-        .trunk {
-            width: 20%;
-            height: 30%;
-            background: brown;
-        }
-
-        .branch {
-            position: abslute;
-            width: 60%;
-            height: 30%;
-            background: green;
-            -moz-transform: rotate(45deg);
-            border-radius: 0 0 100% 0;
-        }
-
-        .branch-1 {
-            border: 50px solid;
-            border-bottom: 90px solid;
-            border-color: transparent transparent #a5894a transparent;
-            height: 0;
-            width: 0;
-            position: absolute;
-            left: -50px;
-            top: -70px;
-        }
-
-        .branch-2 {
-            border-bottom: 40px solid #9d8346;
-            border-left: 30px solid transparent;
-            border-right: 30px solid transparent;
-            height: 0;
-            width: 100px;
-            position: absolute;
-            top: 60px;
-            left: -80px;
-        }
-
-        .branch-3 {
-            border-bottom: 50px solid #90713b;
-            border-left: 40px solid transparent;
-            border-right: 40px solid transparent;
-            height: 0;
-            width: 100px;
-            position: absolute;
-            top: 100px;
-            left: -90px;
-        }
-
-        .mountain-1 {
-            background: #cea392;
-            width: 500px;
-            height: 500px;
-            position: absolute;
-            -moz-transform: rotate(45deg);
-            -webkit-transform: rotate(45deg);
-            bottom: -150px;
-            border-radius: 40px;
-        }
-
-        .mountain-2 {
-            background: #e4dbd2;
-            width: 800px;
-            height: 800px;
-            position: absolute;
-            -moz-transform: rotate(45deg);
-            -webkit-transform: rotate(45deg);
-            bottom: -350px;
-            border-radius: 40px;
-            left: 250px;
-            z-index: -1;
-            box-shadow: 0 0 25px #e4dbd2;
-            opacity: 0.6;
-        }
-
-        .la {
-            position: absolute;
-            bottom: 200px;
-            width: 2px;
-            height: 50px;
-            background: $cd;
-            margin-right: 20px;
-        }
-
-        .la:before {
-            top: 5px;
-            left: -10px;
-            width: 22px;
-            height: 2px;
-            background: $cd;
-        }
-
-        .la:after {
-            bottom: 0;
-            left: -2px;
-            width: 6px;
-            height: 12px;
-            background: $cd;
-        }
-
-        .l {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: #fff;
-            box-shadow: 0 0 10px #fff, 0 0 25px #fff, 0 0 50px #fff;
-        }
-
-        .l:nth-child(1) {
-            left: -10px;
-        }
-
-        .l:nth-child(2) {
-            right: -10px;
-        }
-
-        /*styles for car*/
-        .car {
-            position: absolute;
-
-            top: -35%;
-            z-index: 10;
-            -moz-animation: myfirst 10s linear infinite;
-            -webkit-animation: myfirst 10s linear infinite;
-        }
-
-        @-moz-keyframes myfirst {
-            0% {
-                left: -25%;
-            }
-
-            100% {
-                left: 100%;
-            }
-        }
-
-        @-webkit-keyframes myfirst {
-            0% {
-                left: -25%;
-            }
-
-            100% {
-                left: 100%;
-            }
-        }
-
-        .tyre {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #3f3f40;
-            position: absolute;
-            z-index: 2;
-            left: 9px;
-            top: 20px;
-            -moz-animation: tyre-rotate 1s infinite linear;
-            -webkit-animation: tyre-rotate 1s infinite linear;
-        }
-
-        @-moz-keyframes tyre-rotate {
-            from {
-                -moz-transform: rotate(-360deg);
-            }
-
-            to {
-                -moz-transform: rotate(0deg);
-            }
-
-        }
-
-        @-webkit-keyframes tyre-rotate {
-            from {
-                -webkit-transform: rotate(-360deg);
-            }
-
-            to {
-                -webkit-transform: rotate(0deg);
-            }
-
-        }
-
-        .tyre:before {
-            content: '';
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #bdc2bd;
-            position: absolute;
-            top: 5px;
-            left: 5px;
-        }
-
-        .gap {
-            background: #3f3f40;
-            width: 2px;
-            height: 4px;
-            position: absolute;
-            left: 14px;
-            top: 8px;
-            box-shadow: 0 9px 0 #3f3f40;
-        }
-
-        .gap:before {
-            content: '';
-            display: block;
-            width: 2px;
-            height: 4px;
-            position: absolute;
-            background: #3f3f40;
-            box-shadow: 0 12px 0 #3f3f40;
-            -webkit-transform: rotate(-90deg);
-            -webkit-transform-origin: 0 7px;
-            -moz-transform: rotate(-90deg);
-            -moz-transform-origin: 0 7px;
-            z-index: 3;
-        }
-
-        .car-base {
-            position: absolute;
-            display: block;
-            width: 125px;
-            height: 30px;
-            background: url(/drijvende-vakantiewoning-floating-hotel.jpg);
-            border-radius: 10% 10% 50% 50% / 60% 100% 20% 10%;
-            -webkit-transform: rotate(-2deg);
-            -moz-transform: rotate(-2deg);
-            border: solid;
-            border-color: url(/drijvende-vakantiewoning-floating);
-        }
-
-        .back-bonet {
-            background: #4c4b4b;
-            border-radius: 54% 25% 0 0;
-            height: 22px;
-            left: 11px;
-            position: absolute;
-            top: 8px;
-            width: 40px;
-        }
-
-        .tyre.front {
-            left: 94px;
-        }
-
-        .car-body {
-            /*width:125px;
-        height:24px;
-        background:#d1352b;
-        border-top:1px solid #a82e27;*/
-            border-bottom: 24px solid;
-            height: 0;
-            top: 10px;
-            width: 120px;
-            position: relative;
-        }
-
-        .car-body:before {
-            content: '';
-            display: inline-block;
-            width: 30px;
-            height: 24px;
-            position: absolute;
-            right: -5px;
-            background: url(/Easy-Foot-Spa-Soak.jpeg);
-            border-top-right-radius: 4px;
-            z-index: 1;
-        }
-
-        .car-body:after {
-            content: '';
-            display: inline-block;
-            width: 121px;
-            border-bottom: 1px solid;
-            border-right: 2px solid transparent;
-            height: 0;
-            z-index: 2;
-            position: absolute;
-        }
-
-        .car-gate {
-            width: 32px;
-            height: 20px;
-            background: url(/Easy-Foot-Spa-Soak.jpeg);
-            border-radius: 0 0 2px 8px / 0 0 2px 8px;
-            box-shadow: 0 0 0 1px url(/Easy-Foot-Spa-Soak);
-            position: absolute;
-            left: 48px;
-
-        }
-
-        .car-gate:before {
-            content: '';
-            width: 8px;
-            height: 2px;
-            background: #4c4b4b;
-            position: absolute;
-            top: 2px;
-            left: 4px;
-            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
-        }
-
-        .car-top-back {
-            background: none repeat scroll 0 0 #4C4B4B;
-            border-radius: 5px 0 0 0;
-            height: 20px;
-            left: 4px;
-            position: absolute;
-            top: -20px;
-            width: 58px;
-        }
-
-        .car-top-back:before {
-            width: 30px;
-            height: 15px;
-            background: #736f6f;
-            content: '';
-            position: absolute;
-            top: 3px;
-            left: 8px;
-            border-radius: 2px;
-        }
-
-        .car-top-back:after {
-            content: '';
-            background: url(/favicon.ico);
-            border-radius: 30%;
-            height: 5px;
-            left: 3px;
-            position: absolute;
-            top: -1px;
-            width: 62px;
-        }
-
-        .car-top-front {
-            top: -19px;
-            position: absolute;
-            left: 47px;
-            width: 20px;
-            height: 20px;
-            background: url(/favicon.ico);
-            border-left: url(/favicon.ico);
-            border-radius: 2px 0 0 0;
-
-        }
-
-        .car-top-front:after {
-            width: 26px;
-            height: 20px;
-            -webkit-transform: skew(37deg);
-            -moz-transform: skew(37deg);
-            background: url(/favicon.ico);
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 6px;
-            border-radius: 4px 0 4px 4px;
-        }
-
-        .car-top-front:before {
-            width: 12px;
-            height: 5px;
-            background: url(/favicon.ico);
-            content: '';
-            position: absolute;
-            top: 14px;
-            left: 28px;
-            z-index: 1;
-            border: solid url(/favicon.ico);
-            border-width: 0 1px 1px 0;
-        }
-
-        .wind-sheild {
-            top: 3px;
-            left: 3px;
-            position: absolute;
-            z-index: 3;
-            width: 18px;
-            height: 12px;
-            background: #f5e7e7;
-            border-radius: 0 3px 0 0;
-        }
-
-        .wind-sheild:after {
-            width: 12px;
-            height: 12px;
-            -webkit-transform: skew(25deg);
-            -moz-transform: skew(25deg);
-            background: #f5e7e7;
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 10px;
-            border-radius: 3px;
-        }
-
-        .boundary-tyre-cover {
-            position: absolute;
-            top: 14px;
-            left: 10px;
-            border-bottom: 20px solid #4c4b4b;
-            border-right: 10px solid transparent;
-            height: 0;
-            width: 20px;
-        }
-
-        .boundary-tyre-cover:before {
-            content: '';
-            position: absolute;
-            display: inline-block;
-            background: #4c4b4b;
-            height: 20px;
-            width: 15px;
-            -webkit-transform: skewX(-20deg);
-            -moz-transform: skewX(-20deg);
-            border-radius: 3px;
-            left: -6px;
-            top: 0;
-        }
-
-        .boundary-tyre-cover:after {
-            content: '';
-            position: absolute;
-            display: inline-block;
-            background: #4c4b4b;
-            height: 20px;
-            width: 20px;
-            -webkit-transform: skewx(40deg);
-            -moz-transform: skewX(40deg);
-            border-radius: 3px;
-            right: -14px;
-            top: 0;
-        }
-
-        .boundary-tyre-cover-inner {
-            position: absolute;
-            top: 4px;
-            left: 4px;
-            border-bottom: 16px solid url(/favicon.ico);
-            border-right: 10px solid transparent;
-            height: 0;
-            width: 15px;
-            z-index: 2;
-        }
-
-        .boundary-tyre-cover-inner:before {
-            content: '';
-            position: absolute;
-            display: inline-block;
-            background: red;
-            height: 16px;
-            width: 15px;
-            -webkit-transform: skewX(-20deg);
-            -moz-transform: skewX(-20deg);
-            border-radius: 3px 3px 0 0;
-            left: -6px;
-            top: 0;
-        }
-
-        .boundary-tyre-cover-inner:after {
-            content: '';
-            position: absolute;
-            display: inline-block;
-            background: url(/favicon.ico);
-            height: 16px;
-            width: 20px;
-            -webkit-transform: skewx(40deg);
-            -moz-transform: skewX(40deg);
-            border-radius: 3px 3px 0 0;
-            right: -11px;
-            top: 0;
-        }
-
-        .boundary-tyre-cover-back-bottom {
-            position: absolute;
-            width: 14px;
-            height: 8px;
-            background: #4c4b4b;
-            top: 12px;
-            left: -19px;
-        }
-
-        .bonet-front {
-            background: #2b89d1;
-            border-radius: 5px 258px 0 38px / 36px 50px 0 0;
-            height: 4px;
-            position: absolute;
-            right: 0;
-            top: -4px;
-            width: 40px;
-            z-index: 0;
-        }
-
-        .back-curve {
-            background: none repeat scroll 0 0 #4C4B4B;
-            border-radius: 960% 100% 0 0;
-            height: 20px;
-            left: -3px;
-            position: absolute;
-            top: 1px;
-            transform: rotate(6deg);
-            width: 5px;
-        }
-
-        .stepney {
-            height: 6px;
-            left: -4px;
-            position: absolute;
-            top: 6px;
-            width: 8px;
-            z-index: -1;
-            background: #3f3f40;
-        }
-
-        .stepney:before {
-            width: 8px;
-            height: 12px;
-            background: #3f3f40;
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -7px;
-            border-radius: 3px 3px 0 0;
-        }
-
-        .stepney:after {
-            width: 8px;
-            height: 12px;
-            background: url(/favicon.ico);
-            content: '';
-            position: absolute;
-            top: 0px;
-            left: -7px;
-            border-radius: 0 0 3px 3px;
-        }
-
-        .tyre-cover-front {
-            background: #4c4b4b;
-            height: 4px;
-            left: 97px;
-            position: absolute;
-            top: 13px;
-            width: 22px;
-            z-index: 1;
-        }
-
-        .tyre-cover-front:before {
-            background: none repeat scroll 0 0;
-            content: "";
-            display: inline-block;
-            height: 21px;
-            left: -10px;
-            position: absolute;
-            top: 0;
-            transform: skewX(-30deg);
-            width: 10px;
-            z-index: 6;
-            border-radius: 4px 0 0 0;
-        }
-
-        .tyre-cover-front:after {
-            background: none repeat scroll 0 0 #4c4b4b;
-            content: "";
-            display: inline-block;
-            height: 6px;
-            left: 14px;
-            position: absolute;
-            top: 0;
-            transform: skewX(30deg);
-            width: 17px;
-            z-index: 6;
-            border-radius: 0 4px 2px 0;
-        }
-
-        .boundary-tyre-cover-inner-front {
-            position: absolute;
-            top: 4px;
-            left: 4px;
-            border-bottom: 16px solid url(/favicon.ico);
-            border-right: 10px solid transparent;
-            height: 0;
-            width: 15px;
-            z-index: 7;
-        }
-
-        .boundary-tyre-cover-inner-front:before {
-            background: none repeat scroll 0 0 url(/favicon.ico);
-            border-radius: 3px 3px 0 0;
-            content: "";
-            display: inline-block;
-            height: 17px;
-            left: -10px;
-            position: absolute;
-            top: 0;
-            transform: skewX(-30deg);
-            width: 15px;
-        }
-
-        .boundary-tyre-cover-inner-front:after {
-            content: '';
-            position: absolute;
-            display: inline-block;
-            background: url(/favicon.ico);
-            height: 16px;
-            width: 20px;
-            -webkit-transform: skewx(25deg);
-            -moz-transform: skewX(25deg);
-            border-radius: 3px 3px 0 0;
-            right: -12px;
-            top: 0;
-        }
-
-        .base-axcel {
-            background: none repeat scroll 0 0 url(/favicon.ico);
-            bottom: -15px;
-            height: 10px;
-            left: 30px;
-            position: absolute;
-            transform: rotate(-2deg);
-            width: 70px;
-            z-index: -1;
-        }
-
-        .base-axcel:before {
-            background: none repeat scroll 0 0 url(/favicon.ico);
-            border-radius: 0 0 0 10px / 0 0 0 5px;
-            content: "";
-            height: 10px;
-            left: -35px;
-            position: absolute;
-            top: -2px;
-            transform: rotate(6deg);
-            width: 30px;
-        }
-
-        .base-axcel:after {
-            background: none repeat scroll 0 0 url(/favicon.ico);
-            border-radius: 0 0 0 10px / 0 0 0 5px;
-            content: "";
-            height: 10px;
-            right: -33px;
-            position: absolute;
-            top: -1px;
-            transform: rotate(-4deg);
-            width: 40px;
-            border-radius: 0 10px 5px 0;
-        }
-
-        .front-bumper {
-            background: none repeat scroll 0 0 #4c4b4b;
-            border-radius: 0 2px 2px 0;
-            height: 8px;
-            position: absolute;
-            right: -15px;
-            width: 11px;
-            z-index: 1;
-            -moz-transform: rotate(-5deg);
-            -webkit-transform: rotate(-5deg);
-        }
-
-        .front-bumper:before {
-            background: none repeat scroll 0 0 url(/favicon.ico);
-            content: "";
-            height: 10px;
-            left: -7px;
-            position: absolute;
-            transform: rotate(-22deg);
-            width: 9px;
-            z-index: 1;
-        }
-
-        .car-shadow {
-            background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-            bottom: -15px;
-            box-shadow: -5px 10px 15px 3px url(/favicon.ico);
-            left: -7px;
-            position: absolute;
-            width: 136px;
-        }
-
-        /*noise css*/
-
-        .noise {
-            position: relative;
-            z-index: 1;
-        }
-
-        .noise:before,
-        .body-noise:before {
-            content: "";
-            position: absolute;
-            z-index: -1;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-image:
-                url(/favicon.ico)
-        }
-
-        .hill {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 250px;
-            border-top-right-radius: 160%;
-            border-top-left-radius: 100%;
-            background-color: #adde60;
-            z-index: -1;
-        }
-
-        .hill:after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            right: -400px;
-            width: 120%;
-            height: 110%;
-            border-top-right-radius: 100%;
-            border-top-left-radius: 0%;
-            background-color: #94c943;
-            -moz-transform: rotate(-12deg);
-            -webkit-transform: rotate(-12deg);
-            box-shadow: 0 0 25px #cbf191 inset;
-        }
-
-        .hill:before {
-            background-color: #93cc3a;
-            border-top-left-radius: 0;
-            border-top-right-radius: 100%;
-            bottom: -70px;
-            content: "";
-            height: 110%;
-            left: -54px;
-            position: absolute;
-            transform: rotate(4deg);
-            width: 120%;
-        }
-
-        .cloud {
-            background: #fff;
-            width: 150px;
-            height: 50px;
-            border-radius: 50px;
-            position: absolute;
-            left: 450px;
-            top: 150px;
-        }
-
-        .cloud:before {
-            width: 100px;
-            height: 100px;
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: -15px;
-            border-radius: 50px;
-            box-shadow: 100px 0 0 #fff;
-            background: #fff;
-        }
-
-        .w3-bar-item {
-            font-size: 2em;
-            font-family: 'Vidaloka', serif;
-        }
-
-        p {
-            font-size: 1.5em;
-            text-align: center;
-            font-family: 'Handlee', cursive;
-        }
-
-        h1 {
-            animation-duration: 6s;
-            animation-name: rotate;
-            animation-play-state: 6s;
-            animation-direction: alternate;
-
-        }
-
-        @keyframes rotate {
-            from {
-                margin-left: 100%;
-                width: 100%;
-            }
-
-            50% {
-                font-size: 300%;
-                margin-left: 25%;
-                width: 150%;
-            }
-
-            to {
-                margin-left: 0%;
-                width: 100%;
-            }
-        }
-
-        .fa:hover {
-            opacity: 0.7;
-        }
-    </style>
+    <title>Beautiful-blackhairstyles</title>
+    <style>body {
+        background: #000;
+        color: #fff;
+      }
+      h1 {
+        position: relative;
+        text-align: center;
+        font-size: 50px;
+        font-family: 'Megrim', cursive;
+        text-shadow: 
+              0 0 5px #0bf4f3,
+              0 0 10px #0bf4f3,
+              0 0 20px #0bf4f3,
+              0 0 40px #0bf4f3,
+              0 0 80px #0bf4f3;
+      }
+      
+      p {
+        font-family: 'Pompiere', cursive;
+        font-weight: 300;
+        text-align: center;
+        font-size: 20px;
+        color: #fff;
+      }
+      .frame {
+        width: 90%;
+        margin: 40px auto;
+        text-align: center;
+      }
+      button {
+        margin: 20px;
+      }
+      .custom-btn {
+        color: #fff;
+        width: 130px;
+        height: 40px;
+        padding: 10px 25px;
+        font-family: 'Lato', sans-serif;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+      }
+      
+      /* 1 */
+      .btn-1 {
+        border: none;
+        background-color: #ff9aff;
+        box-shadow: 0 0 5px #ef97e8;
+      }
+      .btn-1:hover {
+         box-shadow: 0 0 10px #ef97e8, 0 0 20px #ef97e8, 0 0 20px #fff inset;
+      }
+      
+      /* 2 */
+      .btn-2 {
+        color: #0bf4f3;
+        border: 1px solid #0bf4f3;
+        box-shadow:  0 0 5px #0bf4f3,  0 0 5px #0bf4f3 inset;
+      }
+      .btn-2:before {
+        height: 0%;
+        width: 2px;
+      }
+      .btn-2:hover {
+        color: #fff;
+        box-shadow: inset 0 0 10px #0bf4f3, 0 0 20px #0bf4f3 inset, 0 0 20px #0bf4f3 inset;
+      }
+      
+      
+      /* 3 */
+      .btn-3 {
+        background: #00aced;
+         box-shadow:  0 0 5px #00aced,  0 0 8px #00aced;
+        line-height: 42px;
+        padding: 0;
+        border: none;
+        z-index: 2;
+        -webkit-transition: all 0.3s linear;
+          transition: all 0.3s linear;
+      }
+      .btn-3:hover{
+        background-color: transparent;
+        color: #00aced;
+        box-shadow: 0 5px 3px -3px #00aced, 0 -5px 3px -3px #00aced,
+          0 5px 3px -3px #00aced, 0 -5px 3px -3px #00aced;
+      }
+      .btn-3:before,
+      .btn-3:after {
+        position: absolute;
+        content: "";
+        left: 0;
+        width: 100%;
+        height: 50%;
+        right: 0;
+        z-index: -1;
+        background: #00aced;
+        box-shadow: 0 0 5px #00aced;
+        transition: all 0.3s ease;
+      }
+      .btn-3:before {
+        top: 0;
+      }
+      .btn-3:after {
+        bottom: 0;
+      }
+      .btn-3:hover:before,
+      .btn-3:hover:after {
+        height: 0;
+        background-color: #00aced;
+      }
+      
+      
+      /* 4 */
+      .btn-4 {
+        color: #8ce436;
+        padding: 0;
+        border: 1px solid #8ce436;
+        box-shadow: 0 0 5px #8ce436, 0 0 5px inset;
+      }
+      .btn-4:after {
+        position: absolute;
+        content: "";
+        top: 5px;
+        left: 6px;
+        width: 90%;
+        height: 70%;
+        border: 1px solid #8ce436;
+        box-shadow: 0 0 5px #8ce436 inset;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+      .btn-4:hover:after {
+        opacity: 1;
+      }
+      
+      /* 5 */
+      .btn-5 {
+        background: #21ebff;
+        line-height: 42px;
+        padding: 0;
+        border: none;
+      }
+      .btn-5:hover{
+        background: transparent;
+        color: #21ebff;
+      }
+      .btn-5:before,
+      .btn-5:after{
+        content:'';
+        position:absolute;
+        top:0;
+        right:0;
+        height:2px;
+        background: #21ebff;
+        width:0;
+          box-shadow:  0 0 5px #21ebff,  0 0 5px #21ebff inset;
+        transition:400ms ease all;
+      }
+      .btn-5:after{
+        right:inherit;
+        top:inherit;
+        left:0;
+        bottom:0;
+      }
+      .btn-5:hover:before,
+      .btn-5:hover:after{
+        width:100%;
+        transition:800ms ease all;
+      }
+      
+      
+      /* 6 */
+      .btn-6 {
+        background: #8ce436;
+        line-height: 40px;
+        padding: 0;
+        border: none;
+        box-shadow: 0 0 5px #8ce436;
+      }
+      .btn-6 span {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .btn-6:hover{
+        background: transparent;
+      }
+      .btn-6:before,
+      .btn-6:after {
+        position: absolute;
+        content: "";
+        height: 0%;
+        width: 2px;
+        background: #8ce436;
+       box-shadow: 0 0 5px #8ce436;
+      }
+      .btn-6:before {
+        right: 0;
+        top: 0;
+        transition: all 500ms ease;
+      }
+      .btn-6:after {
+        left: 0;
+        bottom: 0;
+        transition: all 500ms ease;
+      }
+      .btn-6:hover:before {
+        transition: all 500ms ease;
+        height: 100%;
+      }
+      .btn-6:hover:after {
+        transition: all 500ms ease;
+        height: 100%;
+      }
+      .btn-6 span:before,
+      .btn-6 span:after {
+        position: absolute;
+        content: "";
+        background: #8ce436;
+        box-shadow: 0 0 5px #8ce436;
+      }
+      .btn-6 span:before {
+        left: 0;
+        top: 0;
+        width: 0%;
+        height: 2px;
+        transition: all 500ms ease;
+      }
+      .btn-6 span:after {
+        right: 0;
+        bottom: 0;
+        width: 0%;
+        height: 2px;
+        transition: all 500ms ease;
+      }
+      .btn-6 span:hover:before {
+        width: 100%;
+      }
+      .btn-6 span:hover:after {
+        width: 100%;
+      }
+      
+      /* 7 */
+      .btn-7 {
+        color: #21ebff;
+        line-height: 40px;
+        padding: 0;
+        border: none;
+      }
+      .btn-7 span {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .btn-7:before,
+      .btn-7:after {
+        position: absolute;
+        content: "";
+        right: 0;
+        bottom: 0;
+        background: #21ebff;
+        box-shadow: 0 0 5px #21ebff;
+        transition: all 0.3s ease;
+      }
+      .btn-7:before{
+         height: 50%;
+         width: 2px;
+      }
+      .btn-7:after {
+        width: 20%;
+        height: 2px;
+      }
+      .btn-7:hover:before {
+        height: 100%;
+      }
+      .btn-7:hover:after {
+        width: 100%;
+      }
+      .btn-7 span:before,
+      .btn-7 span:after {
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 0;
+        background: #21ebff;
+        box-shadow: 0 0 5px #21ebff;
+        transition: all 0.3s ease;
+      }
+      .btn-7 span:before {
+        width: 2px;
+        height: 50%;
+      }
+      .btn-7 span:after {
+        height: 2px;
+        width: 20%;
+      }
+      .btn-7 span:hover:before {
+        height: 100%;
+      }
+      .btn-7 span:hover:after {
+        width: 100%;
+      }
+      
+      /* 8 */
+      .btn-8 {
+        line-height: 40px;
+        padding: 0;
+        background: transparent;
+        border: 1px solid #ff9aff;
+        box-shadow: 0 0 5px #ff9aff, 0 0 5px #ff9aff inset;
+        position: relative;
+        z-index: 2;
+        color: #fff;
+        -webkit-perspective: 300px;
+        perspective: 300px;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+      }
+      .btn-8:hover{
+        color: #ff9aff;
+      }
+      .btn-8:after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #ff9aff;
+        box-shadow: 0 0 5px #ff9aff;
+        z-index: -1;
+        -webkit-transform-origin: center bottom;
+        transform-origin: center bottom;
+        -webkit-transform: rotateX(0);
+        transform: rotateX(0);
+        transition: all 0.3s ease;
+      }
+      .btn-8:hover:after {
+        -webkit-transform: rotateX(-180deg);
+        transform: rotateX(-180deg);
+      }
+        
+      
+      /* 9 */
+      .btn-9 {
+        color: #fff352;
+        border: 1px solid #fff352;
+        box-shadow: 0 0 5px #fff352, 0 0 5px #fff352 inset;
+        z-index: 2;
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+      .btn-9:after {
+        position: absolute;
+        content: " ";
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: all 0.3s ease;
+      }
+      .btn-9:hover {
+        color: #000;
+      }
+      .btn-9:hover:after {
+        background: #fff352;
+        -webkit-transform: scale(2) rotate(180deg);
+        transform: scale(2) rotate(180deg);
+        box-shadow:  4px 4px 6px 0 rgba(255,255,255, 1),
+                    -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+          inset -4px -4px 6px 0 rgba(255,255,255, 1),
+          inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+      }
+      
+      /* 10 */
+      .btn-10 {
+        border: 1px solid #ff9aff;
+        box-shadow: 0 0 5px #ff9aff, 0 0 5px #ff9aff inset;
+        color: #ff9aff;
+        background: #000;
+        z-index: 2;
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+      .btn-10:after {
+        position: absolute;
+        content: " ";
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background: #ff9aff;
+        transition: all 0.3s ease;
+        -webkit-transform: scale(0);
+        transform: scale(0);
+      }
+      .btn-10:hover {
+        color: #fff;
+      }
+      .btn-10:hover:after {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+      
+      /* 11 */
+      .btn-11 {
+        border: 1px solid #21ebff;
+        color: #21ebff;
+        box-shadow: 0 0 5px #21ebff, 0 0 5px #21ebff inset;
+        transition: all 0.3s ease;
+      }
+      .btn-11:hover{
+         text-shadow:
+          0 0 20px #21ebff,
+          0 0 50px rgba(33, 235, 255, .9),
+          0 0 75px rgba(33, 235, 255, .8),
+          0 0 76px rgba(33, 235, 255, .7),
+          0 0 77px rgba(33, 235, 255, .6),
+          0 0 78px rgba(33, 235, 255, .5),
+          0 0 79px rgba(33, 235, 255, .4),
+          0 0 80px rgba(33, 235, 255, .3),
+          0 0 85px rgba(33, 235, 255, .2),
+           0 0 99px rgba(33, 235, 255, .1);
+      }
+      
+      
+      
+      /* 12 */
+      .btn-12{
+        color: #0bf4f3;
+        position: relative;
+        right: 20px;
+        bottom: 20px;
+        border:none;
+        width: 130px;
+        height: 40px;
+        line-height: 40px;
+        -webkit-perspective: 230px;
+        perspective: 230px;
+      }
+      .btn-12 span {
+        display: block;
+        position: absolute;
+        width: 130px;
+        height: 40px;
+        border: 1px solid #0bf4f3;
+        box-shadow: 0 0 5px #0bf4f3, 0 0 5px #0bf4f3 inset;
+        margin:0;
+        text-align: center;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+      }
+      .btn-12 span:nth-child(1) {
+        box-shadow: 0 0 5px #0bf4f3, 0 0 5px #0bf4f3 inset;
+        -webkit-transform: rotateX(90deg);
+        -moz-transform: rotateX(90deg);
+        transform: rotateX(90deg);
+        -webkit-transform-origin: 50% 50% -20px;
+        -moz-transform-origin: 50% 50% -20px;
+        transform-origin: 50% 50% -20px;
+      }
+      .btn-12 span:nth-child(2) {
+        -webkit-transform: rotateX(0deg);
+        -moz-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+        -webkit-transform-origin: 50% 50% -20px;
+        -moz-transform-origin: 50% 50% -20px;
+        transform-origin: 50% 50% -20px;
+      }
+      .btn-12:hover span:nth-child(1) {
+        -webkit-transform: rotateX(0deg);
+        -moz-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+      }
+      .btn-12:hover span:nth-child(2) {
+        background: #000;
+        color: #000;
+        box-shadow: 0 0 5px #0bf4f3, 0 0 5px #0bf4f3 inset;
+        -webkit-transform: rotateX(-90deg);
+        -moz-transform: rotateX(-90deg);
+        transform: rotateX(-90deg);
+      }
+      
+      
+      /* 13 */
+      .btn-13 {
+        color: #0bf4f3;
+        box-shadow: 0 0 5px #0bf4f3, 0 0 5px #0bf4f3 inset;
+        border: 1px solid #0bf4f3;
+        z-index: 1;
+      }
+      .btn-13:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        box-shadow: 0 0 5px #0bf4f3, 0 0 5px #0bf4f3 inset;
+        transition: all 0.3s ease;
+      }
+      .btn-13:hover {
+        
+      }
+      .btn-13:hover:after {
+        top: 0;
+        height: 100%;
+      }
+      .btn-13:active {
+        top: 2px;
+      }
+      
+      
+      /* 14 */
+      .btn-14 {
+        position: relative;
+        color: #00aced;
+        border: none;
+        z-index: 2;
+      }
+      .btn-14:before,
+      .btn-14:after {
+        position: absolute;
+        content: "";
+        width: 20%;
+        height: 20%;
+        border: 1px solid;
+        
+        z-index: -1;
+        transition: all 0.3s ease;
+      }
+      .btn-14:before{
+         top: 0;
+         left: 0;
+         border-bottom-color: transparent;
+         border-right-color: transparent;
+         border-top-color: #00aced;
+         border-left-color: #00aced;
+      }
+      .btn-14:after{
+         bottom: 0;
+         right: 0;
+         border-top-color: transparent;
+         border-left-color: transparent;
+         border-bottom-color: #00aced;
+         border-right-color: #00aced;
+      }
+      .btn-14:hover:before,
+      .btn-14:hover:after {
+        border-color: #00aced;
+        height: 100%;
+        width: 100%;
+        box-shadow: 0 0 5px #00aced, 0 0 5px #00aced inset;
+      }
+      
+      
+      /* 15 */
+      .btn-15 {
+        color: #ff9aff;
+        border: 1px solid#ff9aff;
+        box-shadow: 0 0 5px #ff9aff, 0 0 5px #ff9aff inset;
+        z-index: 1;
+      }
+      .btn-15:after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 100%;
+        top: 0;
+        right: 0;
+        z-index: -1;
+        background: #ff9aff;
+        box-shadow:
+         0 0 20px  #ff9aff;
+        transition: all 0.3s ease;
+      }
+      .btn-15:hover {
+        color: #fff;
+      }
+      .btn-15:hover:after {
+        left: 0;
+        width: 100%;
+      }
+      .btn-15:active {
+        top: 2px;
+      }
+      
+      
+      /* 16 */
+      .btn-16 {
+        border: 1px solid #fff;
+        box-shadow: 0 0 5px #fff, 0 0 5px #fff inset;
+      }
+      .btn-16:after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 100%;
+        top: 0;
+        left: 0;
+        direction: rtl;
+        z-index: -1;
+        box-shadow:
+         -7px -7px 20px 0px #fff9,
+         -4px -4px 5px 0px #fff9,
+         7px 7px 20px 0px #0002,
+         4px 4px 5px 0px #0001;
+        transition: all 0.3s ease;
+      }
+      .btn-16:hover {
+       box-shadow: rgba(255,255,255, 1) -1px -1px,  -2px -2px, rgba(255,255,255, 1) -3px -3px, rgba(255,255,255, .9) -4px -4px,
+         rgba(255,255,255,.8) -5px -5px, rgba(255,255,255,.7) -6px -6px, rgba(255,255,255,.6) -7px -7px, rgba(255,255,255,.5) -8px -8px,
+            rgba(255,255,255,.4) -9px -9px, rgba(255,255,255,.3) -10px -10px, rgba(255,255,255,.2) -11px -11px, rgba(255,255,255,.1) -12px -12px;
+      }
+      .btn-16:hover:after {
+        left: auto;
+        right: 0;
+        width: 100%;
+      }
+      .btn-16:active {
+        top: 2px;
+      }</style>
 </head>
-
 <body>
-
-    <div id="main">
-        <div class="country-wrap">
-            <div class="w3-top nails">
-                <div class="w3-bar w3-hover-border-lime w3-wide w3-padding w3-card-2">
-                    <h1 href="#home" class="w3-animate-fading w3-bar-item w3-button"><b></b>Autoservice Felix</a>
-                        <!-- Float links to the right. Hide them on small screens -->
-                        <div class="w3-right w3-animate-bottom w3-badge info f">
-                            <h1 href="#services" class="w3-bar-item w3-button">Services</a>
-                                <h1 href="#hours" class="w3-bar-item w3-button">Hours</a>
-                                    <h1 href="#our team" class="w3-bar-item w3-button">Our Team</a>
-                                        <h1 href="#contact" class="w3-bar-item w3-button">Contact</a>
-
-                        </div>
-                </div>
-            </div>
-
-            <!--<div class="mountain-1"></div>
-	<div class="mountain-2"></div>-->
-
-            <div class="sun"></div>
-            <div class="grass"></div>
-            <div class="street">
-                <div class="car">
-                    <!--<div class="car-base"></div>-->
-                    <div class="car-body">
-                        <div class="car-top-back">
-                            <div class="back-curve"></div>
-                        </div>
-                        <div class="car-gate"></div>
-                        <div class="car-top-front">
-                            <div class="wind-sheild"></div>
-                        </div>
-                        <div class="bonet-front"></div>
-                        <div class="stepney"></div>
-                    </div>
-                    <div class="boundary-tyre-cover">
-                        <div class="boundary-tyre-cover-back-bottom"></div>
-                        <div class="boundary-tyre-cover-inner"></div>
-                    </div>
-                    <div class="tyre-cover-front">
-                        <div class="boundary-tyre-cover-inner-front"></div>
-                    </div>
-                    <div class="base-axcel">
-
-                    </div>
-                    <div class="front-bumper"></div>
-                    <div class="tyre">
-                        <div class="gap"></div>
-                    </div>
-                    <div class="tyre front">
-                        <div class="gap"></div>
-                    </div>
-                    <div class="car-shadow"></div>
-                </div>
-            </div>
-            <div class="street-stripe"></div>
-            <div class="hill">
-                <!--<div class="tree-1">
-			<div class="branch-1"></div>
-			<div class="branch-2"></div>
-			<div class="branch-3"></div>
-		</div>
-		<div class="tree-1">
-		<div class="branch"></div>
-		<div class="trunk"></div>
-	</div>-->
-            </div>
-
-        </div>
-        <h1>Autoservice Felix</h1>
-        <div class="geeks">
-            Reperatie Expert
-        </div>
-    </div>
+    <header>
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css2?family=Megrim&family=Pompiere&display=swap" rel="stylesheet">
+     </header>
+     
+     <h1>Streetlifetrends</h1>
+     <p>Beautiful-blackhairstyles</p>
+     <div class="frame">
+       <button class="custom-btn btn-1">Read More</button>
+       <button class="custom-btn btn-2">Read More</button>
+       <button class="custom-btn btn-3">Read More</button>
+       <button class="custom-btn btn-4">Read More</button>
+       <button class="custom-btn btn-5"><span>Read More</span></button>
+       <button class="custom-btn btn-6"><span>Read More</span></button>
+       <button class="custom-btn btn-7"><span>Read More</span></button>
+       <button class="custom-btn btn-8">Read More</button>
+       <button class="custom-btn btn-9">Read More</button>
+       <button class="custom-btn btn-10">Read More</button>
+       <button class="custom-btn btn-11">Read More</button>
+       <button class="custom-btn btn-12"><span>Click!</span><span>Read More</span></button>
+       <button class="custom-btn btn-13">Read More</button>
+       <button class="custom-btn btn-14">Read More</button>
+       <button class="custom-btn btn-15">Read More</button>
+       <button class="custom-btn btn-16"><span>Read More</span></button>
+       <p style="font-family: 'Megrim', cursive;">
+         DEERBUCKS.DESIGNING</p>
+     </div>
+     
+    
 </body>
-
 </html>
